@@ -1,0 +1,75 @@
+/* Basic styling for the monster ordering game */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 20px;
+  color: #333;
+}
+
+#info {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  font-size: 18px;
+}
+
+#reset {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#reset:hover {
+  background-color: #45a049;
+}
+
+/* Container for the monster grid */
+#grid-container {
+  margin: 20px auto;
+  display: grid;
+  /* 17 columns of 70px width each */
+  grid-template-columns: repeat(17, 70px);
+  /* 9 rows of 73px height each */
+  grid-template-rows: repeat(9, 73px);
+  gap: 2px;
+  width: fit-content;
+  border: 2px solid #ccc;
+  background-color: #e9e9e9;
+}
+
+/* Styling for each monster tile */
+.tile {
+  width: 70px;
+  height: 73px;
+  background-image: url('Monsters.jpg');
+  /* Scale the background image so each tile can use background-position to show the correct sprite */
+  background-size: 1190px 657px; /* 17*70 x 9*73 */
+  cursor: pointer;
+  border: 1px solid #999;
+  box-sizing: border-box;
+}
+
+/* Blank spaces (two at the end) */
+.blank {
+  width: 70px;
+  height: 73px;
+  background-color: #ddd;
+  border: 1px dashed #aaa;
+}
+
+/* Highlight a selected tile when clicked */
+.selected {
+  outline: 3px solid #ff4136;
+}

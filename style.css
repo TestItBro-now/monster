@@ -73,7 +73,8 @@ h1 {
 .selected {
   outline: 3px solid #ff4136;
 }
-.correct {
-  outline: 2px solid rgba(255, 215, 0, 0.5);
-}
 
+/* Highlight a tile that is in its correct position */
+.correct {
+  outline: 3px solid #ffdc00;
+}

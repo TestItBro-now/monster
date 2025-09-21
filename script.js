@@ -62,6 +62,8 @@ function initGame() {
 
   // Render the grid
   renderGrid();
+  // Highlight any tiles already in the correct position
+  updateCorrectTiles();
 
   // Reset and start the timer
   startTimer();
@@ -210,8 +212,31 @@ function swapTiles(el1, el2) {
   Array.from(parent.children).forEach((child, idx) => {
     child.dataset.index = idx;
   });
+
+  // Update correct highlights after the swap
+  updateCorrectTiles();
 }
 
+/**
+ * Update the highlighting for tiles that are currently in their correct positions.
+ * Applies the 'correct' class to tiles where the tileOrder's id matches its index.
+ * This provides visual feedback as the user arranges the monsters.
+ */
+function updateCorrectTiles() {
+  const container = document.getElementById('grid-container');
+  // Iterate through each cell in the grid and adjust the 'correct' class
+  Array.from(container.children).forEach((child, index) => {
+    // Remove existing highlight
+    child.classList.remove('correct');
+    // Only consider real monster tiles within the first ACTUAL_TILES slots
+    if (index < ACTUAL_TILES && tileOrder[index] === index) {
+      // Only add highlight if this cell is not a blank placeholder
+      if (!child.classList.contains('blank')) {
+        child.classList.add('correct');
+      }
+    }
+  });
+}
 /**
  * Check whether the current arrangement solves the puzzle. If solved, stop the timer and
  * show a congratulatory message.
